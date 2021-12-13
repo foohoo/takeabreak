@@ -9,8 +9,7 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>{name}</h1>
 	<button on:click={() => handleClick()}>Button</button>
 </main>
 
@@ -30,7 +29,7 @@
 	}
 
 	:root {
-		--back-url: url(https://source.unsplash.com/random/1280x720/?cat);
+		--back-url: url(https://source.unsplash.com/random/1280x720/?nature,landscape);
 	}
 
 	:global(body) {
