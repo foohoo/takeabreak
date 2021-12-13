@@ -1,9 +1,10 @@
 <script lang="ts">
 	export let name: string;
-	let root = document.querySelector(":root");
+	let root = document.documentElement.style;
+	let search = 'nature,landscape';
+	let i = 0;
 	function handleClick() {
-		// root.setAttribute('--back-url', `url(https://source.unsplash.com/random/1280x720/?landscape)`)
-		root.setAttribute('--back-url', `url(https://source.unsplash.com/random/1280x720/?nature,landscape)`)
+		root.setProperty('--back-url', `url(https://source.unsplash.com/random/1024x768/?${search},${i++})`)
 	}
 </script>
 
