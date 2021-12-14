@@ -44,7 +44,9 @@
 
 <div class="timer-bar">
 	<h1>{name}</h1>
-	<Timer countFunction={countingDown} />
+	<span class="timer-comps">
+		<Timer countFunction={countingDown} />
+	</span>
 </div>
 
 <main>
@@ -59,13 +61,17 @@
 <style>
 
 	.timer-bar{
-		padding: 1em;
+		display: table;
+	}
+
+	.timer-comps{
+		display: table-cell;
 		vertical-align: middle;
+		padding-top: 1em;
 	}
 
 	.timer-bar h1{
-		display: inline;
-		padding-top: 1em;
+		margin: 0;
 	}
 
 	.youtube-section{

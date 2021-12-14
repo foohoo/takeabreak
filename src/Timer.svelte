@@ -34,10 +34,8 @@
 
 <style>
 	timer {
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-		vertical-align: text-bottom;
+		margin: 1em;
+		position: relative;
 	}
 	@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css");
 </style>
