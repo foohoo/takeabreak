@@ -2,11 +2,18 @@
 	import Timer from './Timer.svelte';
 
 	export let name: string;
-	export let minutes = 0;
-	export let seconds = 0;
+
+	var minutes = 0;
+	var seconds = 0;
+
+	var interval = setInterval(function(){});
 
 	function countingDown(targetDate){
-		var x = setInterval(function() {
+		minutes = 0;
+		seconds = 0;
+		clearInterval(interval)
+
+		interval = setInterval(function() {
 
 		var now = new Date().getTime();
 		var distance =  targetDate - now;
@@ -15,7 +22,7 @@
 		seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 		if (distance < 0) {
-			clearInterval(x);
+			clearInterval(interval);
 		}
 		}, 1000);
 	}
