@@ -43,7 +43,9 @@
 </script>
 
 <div class="timer-bar">
-	<h1>{name}</h1>
+	<span class="timer-comps">
+		<h1>{name}</h1>
+	</span>
 	<span class="timer-comps">
 		<Timer countFunction={countingDown} />
 	</span>
@@ -66,8 +68,7 @@
 
 	.timer-comps{
 		display: table-cell;
-		vertical-align: middle;
-		padding-top: 1em;
+		vertical-align: bottom;
 	}
 
 	.timer-bar h1{
