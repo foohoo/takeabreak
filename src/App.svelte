@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Timer from './Timer.svelte';
+	import YoutubeSection from './YoutubeSection.svelte';
 
 	export let name: string;
 
@@ -56,9 +57,7 @@
 	<h1>{timer}</h1>
 </main>
 
-<youtube-section>
-	<h2>Youtube</h2>
-</youtube-section>
+<YoutubeSection />
 
 <style>
 
