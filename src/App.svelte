@@ -10,7 +10,7 @@
 
 <main>
 	<h1>{name}</h1>
-	<button on:click={() => handleClick()}>Button</button>
+	<button on:click={handleClick}>Button</button>
 </main>
 
 <style>
