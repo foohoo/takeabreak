@@ -57,7 +57,7 @@
 	<h1>{timer}</h1>
 </main>
 
-<YoutubeSection />
+<YoutubeSection hidden={working}/>
 
 <style>
 

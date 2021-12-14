@@ -3,6 +3,8 @@
     import gapi from 'gapi-client';
     $: videoResponses = [];
 
+    export let hidden = false;
+
     function onClientLoad() {
         gapi.client.load('youtube', 'v3', onYouTubeApiLoad);
     }
@@ -31,8 +33,10 @@
 
     gapi.load('client', onClientLoad);
 </script>
+{#if !hidden}
 {#each videoResponses as id, i}
     <div>
         <YouTube videoId={id} />
     </div>
 {/each}
+{/if}
