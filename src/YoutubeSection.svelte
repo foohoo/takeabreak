@@ -4,9 +4,9 @@
     $: videoResponses = [];
 
     const options = {
-        height: '390',
-        width: '640'
-    };
+    height: '100',
+    width: '100'
+  };
 
     export let hidden = false;
 
@@ -27,7 +27,7 @@
         q:"cat"
     });
         // Send the request to the API server, call the onSearchResponse function when the data is returned
-        request.execute(onSearchResponse);
+        // request.execute(onSearchResponse);
     }
     // Triggered by this line: request.execute(onSearchResponse);
     function onSearchResponse(response) {
@@ -38,13 +38,15 @@
 
     gapi.load('client', onClientLoad);
 </script>
-{#if !hidden}
+
+{#if hidden}
     <div class="videoBlock">
-        {#each videoResponses as id, i}
-            <YouTube options={options} videoId={id} />
+        {#each videoResponses as id}
+            <YouTube videoId={id} {options} />
         {/each}
     </div>
 {/if}
+
 <style>
     .videoBlock {
         display: inline;
