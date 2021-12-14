@@ -1,19 +1,50 @@
 <script lang="ts">
+	import Timer from './Timer.svelte';
+
 	export let name: string;
-	let root = document.documentElement.style;
-	let search = 'nature,landscape';
-	let i = 0;
-	function handleClick() {
-		root.setProperty('--back-url', `url(https://source.unsplash.com/random/1024x768/?${search},${i++})`)
+	export let minutes = 0;
+	export let seconds = 0;
+
+	function countingDown(targetDate){
+		var x = setInterval(function() {
+
+		var now = new Date().getTime();
+		var distance =  targetDate - now;
+		
+		minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		if (distance < 0) {
+			clearInterval(x);
+		}
+		}, 1000);
 	}
+
 </script>
+
+<timer-bar>
+	<Timer countFunction={countingDown} />
+</timer-bar>
 
 <main>
 	<h1>{name}</h1>
-	<button on:click={handleClick}>Button</button>
+	<h1>{minutes}m {seconds}s</h1>
 </main>
 
+<youtube-section>
+	<h2>Youtube</h2>
+</youtube-section>
+
 <style>
+
+	timer-bar{
+		padding: 1em;
+	}
+
+	youtube-section{
+		padding: 1em;
+	}
+
 	main {
 		text-align: center;
 		padding: 1em;
