@@ -38,7 +38,7 @@
 {#if !hidden}
     <div class="videoBlock">
         <!-- {#each videoResponses as id} -->
-            <YouTube videoId="xNyhuMxyjdw" {options} />
+            <YouTube videoId="xNyhuMxyjdw"/>
         <!-- {/each} -->
     </div>
 {/if}
