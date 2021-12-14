@@ -7,35 +7,49 @@
 	var seconds = 0;
 
 	var interval = setInterval(function(){});
+	var message = "";
+	var timer = "";
+	var working = true;
 
-	function countingDown(targetDate){
+	function countingDown(timerLength, breakTimerLength){
 		minutes = 0;
 		seconds = 0;
 		clearInterval(interval)
 
+		message = "Time until break...";
+		var targetTime = new Date().getTime() + parseInt(timerLength+1000);
+
 		interval = setInterval(function() {
 
-		var now = new Date().getTime();
-		var distance =  targetDate - now;
-		
-		minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			var now = new Date().getTime();
+			var distance =  (targetTime) - now;
+			
+			minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-		if (distance < 0) {
-			clearInterval(interval);
-		}
+			if (minutes <= 0 && seconds <= 0) {
+				working = !working;
+				targetTime = working 
+					? new Date().getTime() + parseInt(timerLength+1000) 
+					: new Date().getTime() + parseInt(breakTimerLength+1000);
+				message = working ? "Time until break..." : "Break finishes in...";
+				timer = "";
+			}
+
+			timer = `${minutes}m ${seconds}s`;
 		}, 1000);
 	}
 
 </script>
 
-<timer-bar>
+<div class="timer-bar">
+	<h1>{name}</h1>
 	<Timer countFunction={countingDown} />
-</timer-bar>
+</div>
 
 <main>
-	<h1>{name}</h1>
-	<h1>{minutes}m {seconds}s</h1>
+	<h1>{message}</h1>
+	<h1>{timer}</h1>
 </main>
 
 <youtube-section>
@@ -44,11 +58,17 @@
 
 <style>
 
-	timer-bar{
+	.timer-bar{
 		padding: 1em;
+		vertical-align: middle;
 	}
 
-	youtube-section{
+	.timer-bar h1{
+		display: inline;
+		padding-top: 1em;
+	}
+
+	.youtube-section{
 		padding: 1em;
 	}
 
