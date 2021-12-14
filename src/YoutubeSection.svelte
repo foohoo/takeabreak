@@ -3,6 +3,11 @@
     import gapi from 'gapi-client';
     $: videoResponses = [];
 
+    const options = {
+        height: '390',
+        width: '640'
+    };
+
     export let hidden = false;
 
     function onClientLoad() {
@@ -34,9 +39,14 @@
     gapi.load('client', onClientLoad);
 </script>
 {#if !hidden}
-{#each videoResponses as id, i}
-    <div>
-        <YouTube videoId={id} />
+    <div class="videoBlock">
+        {#each videoResponses as id, i}
+            <YouTube options={options} videoId={id} />
+        {/each}
     </div>
-{/each}
 {/if}
+<style>
+    .videoBlock {
+        display: inline;
+    }
+</style>
