@@ -16,7 +16,7 @@
 	var working = true;
 	var i :number = 3;
 
-    var library = ["kt4Z2AA5Kj0", "twM7ulKpPjI", "OBDJOJPqwBM", "xNyhuMxyjdw", "nmNqz74EOPE", "AqgtsfqnoTI", "_tV5LEBDs7w", "oMcNUKInJAY"]
+    var library = ["kt4Z2AA5Kj0", "twM7ulKpPjI", "OBDJOJPqwBM", "xNyhuMxyjdw", "nmNqz74EOPE", "AqgtsfqnoTI", "_tV5LEBDs7w", "oMcNUKInJAY", "2ZpbjpLJvYM"]
 
 	let videoResponses = shuffleLibrary(library);
 
@@ -63,7 +63,7 @@
 				working = !working;
 				if (working) {
 					i = ++i
-					document.documentElement.style.setProperty("--back-url-1", `url(https://source.unsplash.com/random/1280x720/?christmas,${i})`);
+					document.documentElement.style.setProperty("--back-url-1", `url(https://source.unsplash.com/random/1280x720/?cat,${i})`);
 				} else {
 					i = ++i
 					document.documentElement.style.setProperty("--back-url-2", `url(https://source.unsplash.com/random/1280x720/?christmas,${i})`);
