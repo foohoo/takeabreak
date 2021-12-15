@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Timer from './Timer.svelte';
 	import YoutubeSection from './YoutubeSection.svelte';
+	import youtubesearch from './js/youtube-search';
 
 	export let name: string;
 
@@ -12,9 +13,12 @@
 	var timer = "";
 	var working = true;
 
+	$: videoResponses = ["kt4Z2AA5Kj0", "l7_1aQpQTCE", "twM7ulKpPjI"];
+
 	function countingDown(timerLength, breakTimerLength){
 		minutes = 0;
 		seconds = 0;
+		working = true;
 		clearInterval(interval)
 
 		message = "Time until break...";
@@ -29,6 +33,23 @@
 			seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
 			if (minutes <= 0 && seconds <= 0) {
+				minutes = 0;
+				seconds = 0;
+				// let searchPromise = new Promise(function(resolve, reject) {
+				// 	let v = youtubesearch();
+				// 	resolve(v);
+				// });
+
+				// searchPromise.then((value :[]) => {
+				// 	videoResponses = value;
+				// 	working = !working;
+				// 	targetTime = working 
+				// 		? new Date().getTime() + parseInt(timerLength+1000) 
+				// 		: new Date().getTime() + parseInt(breakTimerLength+1000);
+				// 	message = working ? "Time until break..." : "Break finishes in...";
+				// 	timer = "";
+				// })
+
 				working = !working;
 				targetTime = working 
 					? new Date().getTime() + parseInt(timerLength+1000) 
@@ -57,7 +78,7 @@
 	<h1>{timer}</h1>
 </main>
 
-<YoutubeSection hidden={working}/>
+<YoutubeSection hidden={working} videoResponses={videoResponses}/>
 
 <style>
 
