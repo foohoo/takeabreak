@@ -64,8 +64,9 @@
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 1em;
-		font-weight: 400;
+		font-weight: 100;
 		margin: 0;
+		text-shadow: -0.5px 0 #972222,0 -0.5px #972222,-0.5px 0 #972222,0 -0.5px #972222;
 	}
 
 	@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css");
