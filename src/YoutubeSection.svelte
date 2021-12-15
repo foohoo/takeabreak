@@ -10,8 +10,6 @@
 {#if !hidden}
     <div class="videoBlock">
         {#each videoResponses as id}
-            <!-- <span class="video"><YouTube videoId="xNyhuMxyjdw"/></span> -->
-            <!-- <span class="video"><YouTube videoId="xNyhuMxyjdw"/></span> -->
             <span class="video"><YouTube videoId={id}/></span>
         {/each}
     </div>

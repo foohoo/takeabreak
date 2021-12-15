@@ -15,7 +15,7 @@
 	var timer = "";
 	var working = true;
 
-	$: videoResponses = ["kt4Z2AA5Kj0", "l7_1aQpQTCE", "twM7ulKpPjI"];
+	$: videoResponses = ["kt4Z2AA5Kj0", "twM7ulKpPjI"];
 
 	function countingDown(timerLength, breakTimerLength){
 		minutes = 0;
