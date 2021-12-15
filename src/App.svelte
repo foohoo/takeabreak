@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Timer from './Timer.svelte';
 	import YoutubeSection from './YoutubeSection.svelte';
-	import youtubesearch from './js/youtube-search';
+	import { fade } from 'svelte/transition';
 
 	export let name: string;
 
@@ -14,10 +14,29 @@
 	var message = "";
 	var timer = "";
 	var working = true;
+	var i :number = 3;
 
-	$: videoResponses = ["kt4Z2AA5Kj0", "twM7ulKpPjI"];
+    var library = ["kt4Z2AA5Kj0", "twM7ulKpPjI", "OBDJOJPqwBM", "xNyhuMxyjdw", "nmNqz74EOPE", "AqgtsfqnoTI", "_tV5LEBDs7w", "oMcNUKInJAY"]
+
+	let videoResponses = shuffleLibrary(library);
+
+	function shuffleLibrary(array) {
+		let currentIndex = array.length,  randomIndex;
+		while (currentIndex != 0) {
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex--;
+			[array[currentIndex], array[randomIndex]] = [
+				array[randomIndex], array[currentIndex]];
+		}
+		return array;
+		}
 
 	function countingDown(timerLength, breakTimerLength){
+		if(timerLength === 0 && breakTimerLength === 0)
+		{
+			return;
+		}
+
 		minutes = 0;
 		seconds = 0;
 		working = true;
@@ -39,22 +58,17 @@
 
 				minutes = 0;
 				seconds = 0;
-				// let searchPromise = new Promise(function(resolve, reject) {
-				// 	let v = youtubesearch();
-				// 	resolve(v);
-				// });
 
-				// searchPromise.then((value :[]) => {
-				// 	videoResponses = value;
-				// 	working = !working;
-				// 	targetTime = working 
-				// 		? new Date().getTime() + parseInt(timerLength+1000) 
-				// 		: new Date().getTime() + parseInt(breakTimerLength+1000);
-				// 	message = working ? "Time until break..." : "Break finishes in...";
-				// 	timer = "";
-				// })
-
+				videoResponses = shuffleLibrary(videoResponses);
 				working = !working;
+				if (working) {
+					i = ++i
+					document.documentElement.style.setProperty("--back-url-1", `url(https://source.unsplash.com/random/1280x720/?christmas,${i})`);
+				} else {
+					i = ++i
+					document.documentElement.style.setProperty("--back-url-2", `url(https://source.unsplash.com/random/1280x720/?christmas,${i})`);
+				}
+
 				targetTime = working 
 					? new Date().getTime() + parseInt(timerLength+1000) 
 					: new Date().getTime() + parseInt(breakTimerLength+1000);
@@ -67,6 +81,12 @@
 	}
 
 </script>
+
+{#if working}
+	<div transition:fade="{{duration: 1500 }}" class="background-1"></div>
+{:else}
+	<div transition:fade="{{duration: 1500 }}" class="background-2"></div>
+{/if}
 
 <div class="more-snow"></div>
 
@@ -87,6 +107,26 @@
 <YoutubeSection hidden={working} videoResponses={videoResponses}/>
 
 <style>
+
+	.background-1{
+		background-image: var(--back-url-1);
+		width:100%;
+		height:100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		position: absolute;
+		z-index: -99999;
+	}
+
+	.background-2{
+		background-image: var(--back-url-2);
+		width:100%;
+		height:100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		position: absolute;
+		z-index: -99999;
+	}
 
 	.timer-bar{
 		display: table;
@@ -113,22 +153,22 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #fdcf00;
 		text-transform: uppercase;
 		font-size: 4em;
-		font-weight: 200;
-		text-shadow: -1px 0 #972222,0 1px #972222,1px 0 #972222,0 -1px #972222;
+		font-weight: 300;
+		padding-left: 0.2em;
+		text-shadow: -2px 0 #46300063,0 -2px #46300063,-2px 0 #46300063,0 -2px #46300063;
 	}
 
 	:root {
 		--back-url: url(https://source.unsplash.com/random/1280x720/?christmas);
+		--back-url-1: url(https://source.unsplash.com/random/1280x720/?christmas,1);
+		--back-url-2: url(https://source.unsplash.com/random/1280x720/?christmas,2);
 	}
 
 	:global(body) {
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-image: var(--back-url);
-		background-blend-mode: color-burn;
+		padding:0;
 	}
 
 	@media (min-width: 640px) {

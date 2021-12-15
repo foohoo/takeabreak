@@ -61,12 +61,13 @@
 	}
 
 	p {
-		color: #ff3e00;
+		color: #fdcf00;
 		text-transform: uppercase;
-		font-size: 1em;
-		font-weight: 100;
+		font-size: 1.2em;
+		font-weight: 400;
 		margin: 0;
-		text-shadow: -0.5px 0 #972222,0 -0.5px #972222,-0.5px 0 #972222,0 -0.5px #972222;
+		/* text-shadow: -0.5px 0 #d6d6d6,0 -0.5px #d6d6d6,-0.5px 0 #d6d6d6,0 -0.5px #d6d6d6; */
+		text-shadow: -0.8px 0 #46300063,0 -0.8px #46300063,-0.8px 0 #46300063,0 -0.8px #46300063;
 	}
 
 	@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css");
